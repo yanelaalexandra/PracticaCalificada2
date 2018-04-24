@@ -4,19 +4,19 @@
     <item
         android:id="@+id/menu_home"
         android:title="Home"
-        android:icon="@android:drawable/ic_menu_gallery" />
+        android:icon="@drawable/ic_home" />
 
 
     <item
         android:id="@+id/menu_notification"
         android:title="Favorito"
-        android:icon="@android:drawable/ic_menu_share"
+        android:icon="@drawable/ic_favorito"
         />
 
     <item
         android:id="@+id/design_menu_item_text"
         android:title="Archivar"
-        android:icon="@android:drawable/ic_menu_send" />
+        android:icon="@drawable/ic_archivar" />
 
 
 </menu>

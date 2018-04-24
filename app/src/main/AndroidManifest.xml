@@ -32,7 +32,8 @@
         </activity>
         <activity android:name=".activities.DashboardActivity" />
         <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.RegisterProductActivity"></activity>
+        <activity android:name=".activities.RegisterProductActivity" />
+        <activity android:name=".fragments.HomeFragment"></activity>
     </application>
 
 </manifest>

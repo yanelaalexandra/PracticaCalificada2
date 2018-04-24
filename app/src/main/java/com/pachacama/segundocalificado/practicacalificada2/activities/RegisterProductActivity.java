@@ -51,6 +51,8 @@ public class RegisterProductActivity extends AppCompatActivity {
 
 
 
+
+
         if(product_name.isEmpty() ||product_price.isEmpty() || product_desc.isEmpty()){
             Toast.makeText(this, "You must complete all fields", Toast.LENGTH_SHORT).show();
             return;

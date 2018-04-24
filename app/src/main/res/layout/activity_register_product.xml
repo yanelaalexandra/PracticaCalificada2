@@ -7,6 +7,14 @@ android:layout_height="match_parent"
 android:padding="25dp"
 tools:context="com.pachacama.segundocalificado.practicacalificada2.activities.RegisterProductActivity"
 android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="195dp"
+        android:layout_height="105dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/registrar" />
+
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
