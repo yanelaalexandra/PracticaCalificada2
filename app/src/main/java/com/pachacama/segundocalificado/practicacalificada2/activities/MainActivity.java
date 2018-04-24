@@ -5,9 +5,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -23,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private EditText usernameInput;
     private EditText passwordInput;
-    private ProgressBar progressBar;
-    private View loginPanel;
 
 
 
@@ -57,9 +52,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void callLogin(View view){
-        //loginPanel.setVisibility(View.GONE);
-        //progressBar.setVisibility(View.VISIBLE);
-
         String username = usernameInput.getText().toString();
         String password = passwordInput.getText().toString();
 
@@ -75,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         if(user == null){
             Toast.makeText(this, "Username or password invalid", Toast.LENGTH_SHORT).show();
-            //loginPanel.setVisibility(View.VISIBLE);
-            // progressBar.setVisibility(View.GONE);
             return;
         }
 

@@ -1,8 +1,5 @@
 package com.pachacama.segundocalificado.practicacalificada2.models;
 
-/**
- * Created by Alumno on 20/04/2018.
- */
 
 import com.orm.dsl.Table;
 

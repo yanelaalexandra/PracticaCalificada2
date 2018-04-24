@@ -74,6 +74,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/cardview_light_background"
         android:onClick="callRegister"/>
 
     <Button
@@ -81,6 +83,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Cancelar"
+        android:background="@color/colorAccent"
+        android:textColor="@color/cardview_light_background"
         android:onClick="cancelar"/>
 
 
