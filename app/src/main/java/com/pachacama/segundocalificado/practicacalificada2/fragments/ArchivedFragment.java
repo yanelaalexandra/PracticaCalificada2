@@ -18,13 +18,13 @@ import com.pachacama.segundocalificado.practicacalificada2.repository.ProductRep
 
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class ArchivedFragment extends Fragment {
 
-    private static final String TAG = HomeFragment.class.getSimpleName();
+    private static final String TAG = ArchivedFragment.class.getSimpleName();
 
     private RecyclerView productsList;
 
-    public HomeFragment() {
+    public ArchivedFragment() {
     }
 
     @Override
@@ -36,23 +36,23 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
+        View view = inflater.inflate(R.layout.fragment_archived, container, false);
 
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        productsList = view.findViewById(R.id.product_list);
+        productsList = view.findViewById(R.id.product_list_arch);
         productsList.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<Product> products= ProductRepository.list();
+        List<Product> products= ProductRepository.listArchived();
         productsList.setAdapter(new ProductAdapter(products));
 
         return view;
+
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         Log.d(TAG, "onCreateView");
-
     }
+
     @Override
     public void onDetach() {
         super.onDetach();

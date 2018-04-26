@@ -13,8 +13,10 @@ import android.widget.Toast;
 import com.pachacama.segundocalificado.practicacalificada2.R;
 import com.pachacama.segundocalificado.practicacalificada2.activities.DashboardActivity;
 import com.pachacama.segundocalificado.practicacalificada2.models.Product;
+import com.pachacama.segundocalificado.practicacalificada2.repository.ProductRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
@@ -28,7 +30,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     public void setProducts(List<Product> products) {
-
         this.products = products;
     }
 
@@ -73,19 +74,34 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.Button_favoritos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.Button_favoritos.getContext(), product.getProduct_name() +" agregado a favoritos", Toast.LENGTH_SHORT).show();
+                if(Objects.equals(product.getProduct_state(), "FAVORITOS")){
+                    Toast.makeText(holder.Button_favoritos.getContext(), product.getProduct_name() +"quitado de favoritos", Toast.LENGTH_SHORT).show();
+                    ProductRepository.updateState("", product.getId());
+
+                }else {
+                    Toast.makeText(holder.Button_favoritos.getContext(), product.getProduct_name() +" agregado a favoritos", Toast.LENGTH_SHORT).show();
+                    ProductRepository.updateState("FAVORITOS", product.getId());
+
+                }
             }
         });
 
         holder.Button_archivar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.Button_archivar.getContext(), product.getProduct_name() +" archivado", Toast.LENGTH_SHORT).show();
+                if(Objects.equals(product.getProduct_state(), "ARCHIVADO")){
+                    Toast.makeText(holder.Button_archivar.getContext(), product.getProduct_name() +" quitado de archivados", Toast.LENGTH_SHORT).show();
+                    ProductRepository.updateState("", product.getId());
+
+                }else {
+                    Toast.makeText(holder.Button_archivar.getContext(), product.getProduct_name() +" arhivado", Toast.LENGTH_SHORT).show();
+                    ProductRepository.updateState("ARCHIVADO", product.getId());
+
+                }
             }
         });
 
     }
-
     @Override
     public int getItemCount() {
         return this.products.size();

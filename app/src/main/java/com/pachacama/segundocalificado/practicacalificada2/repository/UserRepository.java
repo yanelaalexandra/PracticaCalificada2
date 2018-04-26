@@ -10,10 +10,10 @@ import java.util.List;
 public class UserRepository {
 
 
-    public static List<User> list(){
+    /*public static List<User> list(){
         List<User> users = SugarRecord.listAll(User.class);
         return users;
-    }
+    }*/
 
     public static void create(String username, String fullname, String email, String password){
         User user = new User(username, fullname, email, password);

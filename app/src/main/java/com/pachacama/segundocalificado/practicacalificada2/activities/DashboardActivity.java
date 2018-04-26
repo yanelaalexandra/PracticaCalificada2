@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.pachacama.segundocalificado.practicacalificada2.R;
 import com.pachacama.segundocalificado.practicacalificada2.adapters.ProductAdapter;
+import com.pachacama.segundocalificado.practicacalificada2.fragments.ArchivedFragment;
+import com.pachacama.segundocalificado.practicacalificada2.fragments.FavoritesFragment;
+import com.pachacama.segundocalificado.practicacalificada2.fragments.HomeFragment;
 import com.pachacama.segundocalificado.practicacalificada2.models.Product;
 import com.pachacama.segundocalificado.practicacalificada2.models.User;
 import com.pachacama.segundocalificado.practicacalificada2.repository.ProductRepository;
@@ -38,19 +43,26 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+        final Fragment fragmentHome = new HomeFragment();
+        fragmentManager.beginTransaction().replace(R.id.Contend, fragmentHome).addToBackStack("tag").commit();
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_home:
-                        Toast.makeText(DashboardActivity.this, "Go home section...", Toast.LENGTH_SHORT).show();
+                        fragmentManager.beginTransaction().replace(R.id.Contend, fragmentHome).addToBackStack("tag").commit();
                         break;
                     case R.id.menu_notification:
-                        Toast.makeText(DashboardActivity.this, "Go camera section...", Toast.LENGTH_SHORT).show();
+                        Fragment fragmentFavorite = new FavoritesFragment();
+                        fragmentManager.beginTransaction().replace(R.id.Contend, fragmentFavorite).addToBackStack("tag").commit();
                         break;
                     case R.id.design_menu_item_text:
-                        Toast.makeText(DashboardActivity.this, "Go share section...", Toast.LENGTH_SHORT).show();
+                        Fragment fragmentArchived = new ArchivedFragment();
+                        fragmentManager.beginTransaction().replace(R.id.Contend, fragmentArchived ).addToBackStack("tag").commit();
+
                         break;
                 }
                 return true;
@@ -70,13 +82,6 @@ public class DashboardActivity extends AppCompatActivity {
         User user = UserRepository.getUser(username);
         usernameText.setText(user.getFullname());
 
-        // Configure ReciclerView
-        productsList = findViewById(R.id.product_list);
-        productsList.setLayoutManager(new LinearLayoutManager(this));
-        // Set Data Adapter to ReciclerView
-        List<Product> products= ProductRepository.list();
-        productsList.setAdapter(new ProductAdapter(products));
-
 
     }
 
@@ -88,5 +93,16 @@ public class DashboardActivity extends AppCompatActivity {
 
     public void callRegisterForm(View view) {
         startActivity(new Intent(this, RegisterProductActivity.class));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // refresh data
+        ProductAdapter adapter = (ProductAdapter)productsList.getAdapter();
+        List<Product> products = ProductRepository.list();
+        adapter.setProducts(products);
+        adapter.notifyDataSetChanged();
+
     }
 }

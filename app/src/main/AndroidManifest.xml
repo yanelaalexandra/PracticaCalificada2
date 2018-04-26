@@ -15,7 +15,7 @@
             android:value="sugarormapp.db" />
         <meta-data
             android:name="VERSION"
-            android:value="1" />
+            android:value="2" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />
@@ -33,7 +33,9 @@
         <activity android:name=".activities.DashboardActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.RegisterProductActivity" />
-        <activity android:name=".fragments.HomeFragment"></activity>
+        <activity android:name=".fragments.HomeFragment" />
+        <activity android:name=".fragments.FavoritesFragment" />
+        <activity android:name=".fragments.ArchivedFragment"></activity>
     </application>
 
 </manifest>

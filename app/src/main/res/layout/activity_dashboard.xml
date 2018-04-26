@@ -57,38 +57,38 @@
                 android:text="Logout"
                 android:textColor="@android:color/white" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:onClick="callRegisterForm"
+                android:layout_marginStart="5dp"
+                android:text="Agregar"
+                android:textSize="15sp"
+                android:textColor="@android:color/white" />
+
+
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/relativeLayout1"
+        android:id="@+id/Contend"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="10dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp">
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:id="@+id/product_list"/>
-
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginEnd="15dp"
-            android:clickable="true"
-            android:onClick="callRegisterForm"
-            app:fabSize="normal"
-            app:srcCompat="@android:drawable/ic_menu_add" />
-
-
-
+        android:paddingTop="10dp">
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+
+    </LinearLayout>
+
+
 
 <View
     android:layout_width="match_parent"
