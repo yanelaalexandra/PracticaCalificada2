@@ -18,7 +18,7 @@ import com.pachacama.segundocalificado.practicacalificada2.repository.ProductRep
 
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ChasngeNotifier{
 
     private static final String TAG = HomeFragment.class.getSimpleName();
 
@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
         productsList = view.findViewById(R.id.product_list);
         productsList.setLayoutManager(new LinearLayoutManager(getContext()));
         List<Product> products= ProductRepository.list();
-        productsList.setAdapter(new ProductAdapter(products));
+        productsList.setAdapter(new ProductAdapter(this, products));
 
         return view;
     }
@@ -57,5 +57,12 @@ public class HomeFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         Log.d(TAG, "onCreateView");
+    }
+
+    @Override
+    public void notifyChanges() {
+        ProductAdapter pa = (ProductAdapter) productsList.getAdapter();
+        pa.setProducts(ProductRepository.list());
+        pa.notifyDataSetChanged();
     }
 }

@@ -2,6 +2,7 @@ package com.pachacama.segundocalificado.practicacalificada2.adapters;
 
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 
 import com.pachacama.segundocalificado.practicacalificada2.R;
 import com.pachacama.segundocalificado.practicacalificada2.activities.DashboardActivity;
+import com.pachacama.segundocalificado.practicacalificada2.fragments.ChasngeNotifier;
+import com.pachacama.segundocalificado.practicacalificada2.fragments.HomeFragment;
 import com.pachacama.segundocalificado.practicacalificada2.models.Product;
 import com.pachacama.segundocalificado.practicacalificada2.repository.ProductRepository;
 
@@ -24,7 +27,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     private List<Product> products;
 
-    public ProductAdapter(List<Product> products){
+
+    private ChasngeNotifier chasngeNotifier;
+
+    public ProductAdapter(ChasngeNotifier chasngeNotifier, List<Product> products){
+
+        this.chasngeNotifier = chasngeNotifier;
 
         this.products = products;
     }
@@ -83,6 +91,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                     ProductRepository.updateState("FAVORITOS", product.getId());
 
                 }
+                chasngeNotifier.notifyChanges();
             }
         });
 
@@ -98,6 +107,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                     ProductRepository.updateState("ARCHIVADO", product.getId());
 
                 }
+                chasngeNotifier.notifyChanges();
             }
         });
 

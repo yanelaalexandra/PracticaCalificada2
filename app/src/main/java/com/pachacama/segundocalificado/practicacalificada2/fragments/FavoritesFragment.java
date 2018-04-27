@@ -18,7 +18,7 @@ import com.pachacama.segundocalificado.practicacalificada2.repository.ProductRep
 
 import java.util.List;
 
-public class FavoritesFragment extends Fragment {
+public class FavoritesFragment extends Fragment implements ChasngeNotifier {
 
     private static final String TAG = FavoritesFragment.class.getSimpleName();
 
@@ -43,7 +43,7 @@ public class FavoritesFragment extends Fragment {
         productsList = view.findViewById(R.id.product_list_fav);
         productsList.setLayoutManager(new LinearLayoutManager(getContext()));
         List<Product> products= ProductRepository.listFavorite();
-        productsList.setAdapter(new ProductAdapter(products));
+        productsList.setAdapter(new ProductAdapter(this, products));
 
         return view;
     }
@@ -59,5 +59,12 @@ public class FavoritesFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         Log.d(TAG, "onDetach");
+    }
+
+    @Override
+    public void notifyChanges() {
+        ProductAdapter pa = (ProductAdapter) productsList.getAdapter();
+        pa.setProducts(ProductRepository.listFavorite());
+        pa.notifyDataSetChanged();
     }
 }
