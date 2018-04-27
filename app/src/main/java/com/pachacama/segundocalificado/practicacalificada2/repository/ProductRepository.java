@@ -9,7 +9,7 @@ import java.util.List;
 public class ProductRepository {
 
     public static List<Product> list(){
-        List<Product> products = SugarRecord.listAll(Product.class);
+        List<Product> products = SugarRecord.find(Product.class, "productstate NOT IN (?)","ARCHIVADO");
         return products;
     }
 

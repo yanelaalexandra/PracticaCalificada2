@@ -11,13 +11,17 @@
 
     <TextView
         android:id="@+id/textView_ARCH"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:drawableStart="@mipmap/ic_archived"
+        android:gravity="center|start"
+        android:text="Archivados"
         android:layout_marginBottom="15dp"
-        android:text="Archivados"/>
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_below="@+id/textView_ARCH"

@@ -75,7 +75,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 if(Objects.equals(product.getProduct_state(), "FAVORITOS")){
-                    Toast.makeText(holder.Button_favoritos.getContext(), product.getProduct_name() +"quitado de favoritos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(holder.Button_favoritos.getContext(), product.getProduct_name() +" quitado de favoritos", Toast.LENGTH_SHORT).show();
                     ProductRepository.updateState("", product.getId());
 
                 }else {

@@ -11,13 +11,17 @@
 
     <TextView
         android:id="@+id/textView_FAV"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:drawableStart="@mipmap/ic_star_fav"
+        android:gravity="center_vertical"
+        android:text="Favoritos"
         android:textColor="@color/colorPrimaryDark"
-        android:textAlignment="center"
+        android:textSize="25sp"
         android:layout_marginBottom="15dp"
-        android:text="Favoritos"/>
+        android:textStyle="bold" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_below="@id/textView_FAV"
